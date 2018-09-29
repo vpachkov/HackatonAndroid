@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/registration_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login information"
+            android:textColor="@color/colorGray"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/registration_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="Login"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/registration_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/registration_repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="Repeat password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About you"
+            android:textColor="@color/colorGray"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/registration_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_rect"
+            android:hint="Name"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/registration_male"
+                android:textColor="@color/colorGray"
+                android:clickable="true"
+                android:background="@drawable/gender_button"
+                android:gravity="center"
+                android:text="Male"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/registration_female"
+                android:textColor="@color/colorGray"
+                android:clickable="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/gender_button"
+                android:gravity="center"
+                android:text="Female"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/registration_other"
+                android:textColor="@color/colorGray"
+                android:clickable="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/gender_button"
+                android:gravity="center"
+                android:text="Other"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rect"
+                android:hint="Name"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/registration_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rect"
+                android:hint="Age"
+                android:inputType="numberDecimal"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/registration_already_have_account"
+                android:visibility="visible"
+                android:clickable="true"
+                android:gravity="left"
+                android:text="Already have account?"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2.2"/>
+            <TextView
+                android:id="@+id/registration_save"
+                android:textColor="@color/colorWhite"
+                android:clickable="true"
+                android:background="@drawable/button_shape"
+                android:gravity="center"
+                android:text="Save"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
