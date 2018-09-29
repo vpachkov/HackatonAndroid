@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:fillViewport="true"
-    android:background="@color/colorWhite"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fillViewport="true">
+
     <LinearLayout
         android:id="@+id/login_activity_main_block"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="60dp"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_rect"/>
+            android:background="@drawable/rounded_rect"
+            android:padding="10dp" />
+
         <EditText
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_rect"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_rect"
+            android:padding="10dp" />
+
         <RelativeLayout
             android:id="@+id/button_login"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:padding="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity=""
 
-            android:layout_height="wrap_content">
+            android:padding="15dp">
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/button_shape"
                 android:padding="10dp"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:background="@drawable/button_shape"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="login"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/register_button"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register now"/>
+                android:layout_marginTop="10dp"
+                android:text="Register now" />
         </RelativeLayout>
 
     </LinearLayout>
