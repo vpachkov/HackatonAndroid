@@ -1,5 +1,6 @@
 package com.example.slava.hackatonandroid.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.slava.hackatonandroid.R
@@ -22,6 +23,10 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
 
         parentLayout.addView(TextAdder.makeHatBlock("Discover", "The place", this), 0)
+
+        takePhoto.setOnClickListener {
+            startActivity(Intent(this, ProcessingPhotoActivity::class.java))
+        }
     }
 
     override fun onMapReady(map: GoogleMap) {
