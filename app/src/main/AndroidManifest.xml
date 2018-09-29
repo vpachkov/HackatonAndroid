@@ -24,6 +24,8 @@
         <activity android:name=".presentation.RegisterActivity">
 
         </activity>
+
+        <activity android:name=".presentation.DiscoverPlaceActivity" />
     </application>
 
 </manifest>
