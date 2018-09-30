@@ -90,6 +90,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         inten.putExtra("lat" , position.latitude)
                         inten.putExtra("long" , position.longitude)
                         inten.putExtra("name" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("name"))
+                        inten.putExtra("lat1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("lat"))
+                        inten.putExtra("long1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("long"))
                         startActivity(inten)
                     }
                     main_activity_main_block.addView(block)
