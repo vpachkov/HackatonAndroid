@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         inten.putExtra("long1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("long"))
                         startActivity(inten)
                     }
+                   // Log.e("keek" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("lat"))
                     main_activity_main_block.addView(block)
                 }
             }
