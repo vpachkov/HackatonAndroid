@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
+        else{
+            startActivity(Intent(this, DiscoverPlaceActivity::class.java))
+        }
+
         main_activity_main_block.addView(
                 TextAdder.makeHatBlock("Discover new", "Places", this)
         )

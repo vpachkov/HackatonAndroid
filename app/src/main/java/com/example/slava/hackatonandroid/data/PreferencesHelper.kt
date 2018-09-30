@@ -6,6 +6,7 @@ object PreferencesHelper {
     private const val PREF_FILE = "appname_preferences"
 
     const val KEY_IS_LOGINED = "is_logined"
+    const val KEY_TOKEN = "token"
 
 
     /**
