@@ -31,7 +31,7 @@ class ProcessingPhotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_processing_photo)
         parentLayout.addView(
-                TextAdder.makeHatBlock("Processing photo" , "pthoto" , this)  , 0)
+                TextAdder.makeHatBlock("Processing the" , "photo" , this)  , 0)
 
 
         if (null == savedInstanceState) {
