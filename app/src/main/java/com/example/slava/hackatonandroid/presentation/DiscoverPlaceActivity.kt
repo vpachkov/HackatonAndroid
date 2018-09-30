@@ -31,17 +31,23 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var position = LatLng(55.759768, 37.627259)
 
-    var lat12 = 0.0
-    var long12 = 0.0
-    var name12 = ""
+    var lat_user = 0.0
+    var long_user = 0.0
+    var lat_bul = 0.0
+    var long_bul = 0.0
+    var name_bul = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dicover_place)
 
-        lat12 = getIntent().getDoubleExtra("lat", position.latitude)
-        long12 = getIntent().getDoubleExtra("long", position.longitude)
-        name12 = getIntent().getStringExtra("name")
+        lat_user = getIntent().getDoubleExtra("lat", position.latitude)
+        long_user = getIntent().getDoubleExtra("long", position.longitude)
+        lat_bul = getIntent().getDoubleExtra("lat1", position.latitude)
+        long_bul = getIntent().getDoubleExtra("long1", position.longitude)
+        name_bul = getIntent().getStringExtra("name")
+
+        position = LatLng(lat_user, long_user)
 
         (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
@@ -72,8 +78,8 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-            mMap?.addMarker(MarkerOptions().position(LatLng(lat12, long12))
-                    .title(name12).icon(BitmapDescriptorFactory
+            mMap?.addMarker(MarkerOptions().position(LatLng(lat_bul, long_bul))
+                    .title(name_bul).icon(BitmapDescriptorFactory
                             .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
 
             mMap?.animateCamera(CameraUpdateFactory.newCameraPosition(
