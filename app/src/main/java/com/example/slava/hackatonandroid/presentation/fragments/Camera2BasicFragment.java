@@ -673,6 +673,10 @@ public class Camera2BasicFragment extends Fragment
     bitmap.recycle();
     showToast(textToShow);
     Log.e("text" , textToShow);
+
+    if (textToShow.contains("bottle")) {
+      Log.e("KEK", "NICNICNICNCINC");
+    }
   }
 
   /** Compares two {@code Size}s based on their areas. */
