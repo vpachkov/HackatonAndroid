@@ -31,9 +31,17 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var position = LatLng(55.759768, 37.627259)
 
+    var lat12 = 0.0
+    var long12 = 0.0
+    var name12 = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dicover_place)
+
+        lat12 = getIntent().getDoubleExtra("lat", position.latitude)
+        long12 = getIntent().getDoubleExtra("long", position.longitude)
+        name12 = getIntent().getStringExtra("name")
 
         (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
@@ -55,8 +63,27 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
             position = LatLng(location.latitude, location.longitude)
-            Log.e("kke", position.toString())
-            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 20f))
+            val cameraPosition = CameraPosition.Builder()
+                    .target(position)
+                    .zoom(10f)
+                    .build()
+
+            mMap?.clear()
+
+
+
+            mMap?.addMarker(MarkerOptions().position(LatLng(lat12, long12))
+                    .title(name12).icon(BitmapDescriptorFactory
+                            .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+
+            mMap?.animateCamera(CameraUpdateFactory.newCameraPosition(
+                    cameraPosition))
+
+            mMap?.addMarker(MarkerOptions().position(LatLng(location.latitude, location.longitude))
+                    .title("your location").icon(BitmapDescriptorFactory
+                            .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+
+
         }
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
         override fun onProviderEnabled(provider: String) {}
@@ -71,10 +98,6 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setupMap() {
 
-        var lat12 = getIntent().getDoubleExtra("lat", position.latitude)
-        var long12 = getIntent().getDoubleExtra("long", position.longitude)
-        var name12 = getIntent().getStringExtra("name")
-
         val cameraPosition = CameraPosition.Builder()
                 .target(position)
                 .zoom(10f)
@@ -83,9 +106,9 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap?.animateCamera(CameraUpdateFactory.newCameraPosition(
                 cameraPosition))
 
-
         mMap?.addMarker(MarkerOptions().position(LatLng(lat12, long12))
                 .title(name12).icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+
     }
 }
