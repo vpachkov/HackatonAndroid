@@ -1,5 +1,6 @@
 package com.example.slava.hackatonandroid.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -9,8 +10,13 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import com.example.slava.hackatonandroid.domain.utils.SizeConverter
 import com.example.slava.hackatonandroid.R
+import com.example.slava.hackatonandroid.data.PreferencesHelper
 import com.example.slava.hackatonandroid.domain.utils.TextAdder
+import khttp.post
 import kotlinx.android.synthetic.main.activity_registration.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.onComplete
+import org.jetbrains.anko.toast
 
 class RegisterActivity: AppCompatActivity() {
 
@@ -26,7 +32,32 @@ class RegisterActivity: AppCompatActivity() {
         registration_save.setOnClickListener {
             Log.e("ekkek" , "lol")
             if (checkRegistartionData()){
-                Log.e("ekkek" , "lol")
+                val loginString = registration_login.text.toString()
+                val passwordString = registration_password.text.toString()
+                val nameString = registration_name.text.toString()
+                val cityString = registration_name.text.toString()
+                val ageString = registration_age.text.toString()
+                val context = this
+                val params = mapOf(
+                        "login" to loginString,
+                        "password" to passwordString,
+                        "name" to nameString,
+                        "sex" to gender,
+                        "age" to ageString,
+                        "info" to "fsfdsf"
+                )
+
+                doAsync {
+                    val responseRegistartion = post("https://dookyheroky.herokuapp.com/api/user/addnew/" , data = params)
+                    onComplete {
+                        val token = responseRegistartion.jsonObject.getString("token")
+                        PreferencesHelper.setSharedPreferenceBoolean(context , PreferencesHelper.KEY_IS_LOGINED , true)
+                        PreferencesHelper.setSharedPreferenceString(context , PreferencesHelper.KEY_TOKEN, token)
+                        startActivity(Intent(context, MainActivity::class.java))
+                    }
+                }
+
+
             }
         }
 
@@ -64,6 +95,11 @@ class RegisterActivity: AppCompatActivity() {
                     }
                 }
             }
+
+            if (registration_password.text.toString() != registration_repeat_password.text.toString()){
+                toast("Passwords are not equal")
+                isAllCorrect = false
+            }
         }
         if (gender == "defaultValue"){
             registration_male.setTextColor(resources.getColor(R.color.colorRed))
@@ -71,7 +107,7 @@ class RegisterActivity: AppCompatActivity() {
             registration_other.setTextColor(resources.getColor(R.color.colorRed))
             isAllCorrect = false
         }
-        return isAllCorrect
+        return true
     }
 
 
