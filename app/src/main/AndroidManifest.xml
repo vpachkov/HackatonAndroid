@@ -29,6 +29,7 @@
         <activity android:name=".presentation.RegisterActivity" />
         <activity android:name=".presentation.DiscoverPlaceActivity" />
         <activity android:name=".presentation.ProcessingPhotoActivity" />
+        <activity android:name=".presentation.PlacesActivity" />
 
         <service android:name=".domain.LocationService" />
 
