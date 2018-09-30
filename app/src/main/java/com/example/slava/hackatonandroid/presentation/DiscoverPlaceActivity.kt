@@ -112,8 +112,12 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap?.animateCamera(CameraUpdateFactory.newCameraPosition(
                 cameraPosition))
 
-        mMap?.addMarker(MarkerOptions().position(LatLng(lat12, long12))
-                .title(name12).icon(BitmapDescriptorFactory
+        mMap?.addMarker(MarkerOptions().position(LatLng(position.latitude, position.longitude))
+                .title("your location").icon(BitmapDescriptorFactory
+                        .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+
+        mMap?.addMarker(MarkerOptions().position(LatLng(lat_bul, long_bul))
+                .title(name_bul).icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
 
     }
