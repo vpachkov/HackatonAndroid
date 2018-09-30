@@ -47,6 +47,8 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         long_bul = getIntent().getDoubleExtra("long1", position.longitude)
         name_bul = getIntent().getStringExtra("name")
 
+
+
         position = LatLng(lat_user, long_user)
 
         (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
@@ -75,8 +77,6 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
                     .build()
 
             mMap?.clear()
-
-
 
             mMap?.addMarker(MarkerOptions().position(LatLng(lat_bul, long_bul))
                     .title(name_bul).icon(BitmapDescriptorFactory
