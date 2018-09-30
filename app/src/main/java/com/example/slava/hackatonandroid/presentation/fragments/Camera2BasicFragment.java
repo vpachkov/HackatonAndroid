@@ -680,10 +680,11 @@ public class Camera2BasicFragment extends Fragment
     Log.e("text" , textToShow);
 
     if (textToShow.contains("bottle")) {
-      Integer id = 4;
-      Intent intent = new Intent(getContext(), MainActivity.class);
-      intent.putExtra("id", id);
-      startActivity(intent);
+        Intent i1 = getActivity().getIntent();
+        String id = i1.getStringExtra("id");
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
   }
 
