@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.R.array
 import java.nio.ByteBuffer
 import android.R.attr.bitmap
+import com.example.slava.hackatonandroid.data.PreferencesHelper
 import com.example.slava.hackatonandroid.domain.utils.ImageClassifier
 import com.example.slava.hackatonandroid.presentation.fragments.Camera2BasicFragment
 import java.nio.ByteOrder
@@ -29,7 +30,6 @@ class ProcessingPhotoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_processing_photo)
-
         parentLayout.addView(
                 TextAdder.makeHatBlock("Processing photo" , "pthoto" , this)  , 0)
 

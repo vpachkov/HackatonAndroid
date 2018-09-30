@@ -54,12 +54,16 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.slava.hackatonandroid.R;
 import com.example.slava.hackatonandroid.domain.utils.AutoFitTextureView;
 import com.example.slava.hackatonandroid.domain.utils.ImageClassifier;
+import com.example.slava.hackatonandroid.domain.utils.TextAdder;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -668,7 +672,7 @@ public class Camera2BasicFragment extends Fragment
     String textToShow = classifier.classifyFrame(bitmap);
     bitmap.recycle();
     showToast(textToShow);
-    Log.e("keek" , textToShow);
+    Log.e("text" , textToShow);
   }
 
   /** Compares two {@code Size}s based on their areas. */
