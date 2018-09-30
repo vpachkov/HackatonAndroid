@@ -35,6 +35,10 @@
 
         <activity android:name=".presentation.DiscoverPlaceActivity" />
 
+        <activity android:name=".presentation.MlActivity">
+
+        </activity>
+
         <activity android:name=".presentation.ProcessingPhotoActivity" />
 
         <meta-data

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(this, DiscoverPlaceActivity::class.java))
+        startActivity(Intent(this, ProcessingPhotoActivity::class.java))
 
         /*//if user hasn't been authorized move him to authorization
         if (!(PreferencesHelper.getSharedPreferenceBoolean(applicationContext, PreferencesHelper.KEY_IS_LOGINED, false))) {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         main_activity_main_block.addView(
-                TextAdder.makeHatBlock("Discover new ", "Places", this)
+                TextAdder.makeHatBlock("Discover new", "Places", this)
         )
     }
 }
