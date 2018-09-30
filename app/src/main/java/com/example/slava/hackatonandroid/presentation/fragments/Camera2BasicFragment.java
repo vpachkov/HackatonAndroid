@@ -22,6 +22,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -44,6 +45,7 @@ import android.media.ImageReader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.sax.StartElementListener;
 import android.support.annotation.NonNull;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.content.ContextCompat;
@@ -62,6 +64,7 @@ import com.example.slava.hackatonandroid.R;
 import com.example.slava.hackatonandroid.domain.utils.AutoFitTextureView;
 import com.example.slava.hackatonandroid.domain.utils.ImageClassifier;
 import com.example.slava.hackatonandroid.domain.utils.TextAdder;
+import com.example.slava.hackatonandroid.presentation.MainActivity;
 
 import org.w3c.dom.Text;
 
@@ -73,6 +76,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 /** Basic fragments for the Camera. */
 public class Camera2BasicFragment extends Fragment
@@ -675,7 +680,11 @@ public class Camera2BasicFragment extends Fragment
     Log.e("text" , textToShow);
 
     if (textToShow.contains("bottle")) {
-      Log.e("KEK", "NICNICNICNCINC");
+        Intent i1 = getActivity().getIntent();
+        String id = i1.getStringExtra("id");
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
   }
 

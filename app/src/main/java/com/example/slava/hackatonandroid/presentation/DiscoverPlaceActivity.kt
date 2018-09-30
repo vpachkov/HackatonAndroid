@@ -35,6 +35,7 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
     var long_user = 0.0
     var lat_bul = 0.0
     var long_bul = 0.0
+    var cur_bul_id = "0"
     var name_bul = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +47,9 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         lat_bul = getIntent().getDoubleExtra("lat1", position.latitude)
         long_bul = getIntent().getDoubleExtra("long1", position.longitude)
         name_bul = getIntent().getStringExtra("name")
+        cur_bul_id = getIntent().getStringExtra("id1")
+
+
 
         position = LatLng(lat_user, long_user)
 
@@ -62,7 +66,9 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         parentLayout.addView(TextAdder.makeHatBlock("Discover", "The place", this), 0)
 
         takePhoto.setOnClickListener {
-            startActivity(Intent(this, ProcessingPhotoActivity::class.java))
+            var kek = Intent(this, ProcessingPhotoActivity::class.java)
+            kek.putExtra("id", cur_bul_id)
+            startActivity(kek)
         }
     }
 
@@ -75,6 +81,7 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
                     .build()
 
             mMap?.clear()
+
 
 
             mMap?.addMarker(MarkerOptions().position(LatLng(lat_bul, long_bul))
