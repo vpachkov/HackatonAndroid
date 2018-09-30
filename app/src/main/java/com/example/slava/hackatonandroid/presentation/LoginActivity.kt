@@ -7,12 +7,12 @@ import com.example.slava.hackatonandroid.R
 import com.example.slava.hackatonandroid.domain.utils.TextAdder
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         login_activity_main_block.addView(
-                TextAdder.makeHatBlock("Welcome to" , "AppName" ,  this) , 0
+                TextAdder.makeHatBlock("Welcome to", "AppName", this), 0
         )
 
         register_button.setOnClickListener {

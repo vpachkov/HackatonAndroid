@@ -1,10 +1,10 @@
 package com.example.slava.hackatonandroid.presentation
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.slava.hackatonandroid.R
+import com.example.slava.hackatonandroid.domain.model.Position
 import com.example.slava.hackatonandroid.domain.utils.TextAdder
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,11 +13,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_dicover_place.*
-import org.tensorflow.lite.Interpreter
-import java.io.FileInputStream
-import java.io.IOException
-import java.nio.MappedByteBuffer
-import java.nio.channels.FileChannel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
@@ -33,9 +30,21 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
         takePhoto.setOnClickListener {
             startActivity(Intent(this, ProcessingPhotoActivity::class.java))
         }
+    }
 
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
 
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
 
+    @Subscribe
+    fun onPositionChanged(position: Position) {
+        // Сюда прилетает текущая позиция
     }
 
     override fun onMapReady(map: GoogleMap) {
@@ -48,5 +57,4 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
                 .title("Lolkek").icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
     }
-
 }
