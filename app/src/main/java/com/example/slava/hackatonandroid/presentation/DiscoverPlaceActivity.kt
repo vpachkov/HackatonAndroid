@@ -71,6 +71,10 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setupMap() {
 
+        var lat12 = getIntent().getDoubleExtra("lat", position.latitude)
+        var long12 = getIntent().getDoubleExtra("long", position.longitude)
+        var name12 = getIntent().getStringExtra("name")
+
         val cameraPosition = CameraPosition.Builder()
                 .target(position)
                 .zoom(10f)
@@ -80,8 +84,8 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
                 cameraPosition))
 
 
-        mMap?.addMarker(MarkerOptions().position(LatLng(59.146361, 47.267305))
-                .title("Lolkek").icon(BitmapDescriptorFactory
+        mMap?.addMarker(MarkerOptions().position(LatLng(lat12, long12))
+                .title(name12).icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_RED)))
     }
 }
