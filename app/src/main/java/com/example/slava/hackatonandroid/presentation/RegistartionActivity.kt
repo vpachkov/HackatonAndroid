@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.slava.hackatonandroid.domain.utils.SizeConverter
 import com.example.slava.hackatonandroid.R
 import com.example.slava.hackatonandroid.data.PreferencesHelper
