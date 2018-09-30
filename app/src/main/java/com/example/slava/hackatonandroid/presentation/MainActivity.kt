@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(this, ProcessingPhotoActivity::class.java))
+        startActivity(Intent(this, DiscoverPlaceActivity::class.java))
 
         /*//if user hasn't been authorized move him to authorization
         if (!(PreferencesHelper.getSharedPreferenceBoolean(applicationContext, PreferencesHelper.KEY_IS_LOGINED, false))) {
