@@ -34,6 +34,7 @@
         </activity>
 
         <activity android:name=".presentation.ProcessingPhotoActivity" />
+        <activity android:name=".presentation.PlacesActivity" />
 
         <service android:name=".domain.LocationService" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
