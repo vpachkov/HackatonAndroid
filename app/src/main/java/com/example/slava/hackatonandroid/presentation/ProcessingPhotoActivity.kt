@@ -1,53 +1,45 @@
 package com.example.slava.hackatonandroid.presentation
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.example.slava.hackatonandroid.R
 import com.example.slava.hackatonandroid.domain.utils.TextAdder
-import com.wonderkiln.camerakit.*
 import kotlinx.android.synthetic.main.activity_processing_photo.*
+import org.tensorflow.lite.Interpreter
+import java.io.FileInputStream
+import java.io.IOException
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
+import android.R.attr.y
+import android.R.attr.x
+import android.R.attr.bitmap
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.R.array
+import java.nio.ByteBuffer
+import android.R.attr.bitmap
+import com.example.slava.hackatonandroid.domain.utils.ImageClassifier
+import com.example.slava.hackatonandroid.presentation.fragments.Camera2BasicFragment
+import java.nio.ByteOrder
+
 
 class ProcessingPhotoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_processing_photo)
 
-        parentLayout.addView(TextAdder.makeHatBlock("Processing", "The photo", this), 0)
-    }
+        parentLayout.addView(
+                TextAdder.makeHatBlock("Processing photo" , "pthoto" , this)  , 0)
 
-    override fun onResume() {
-        super.onResume()
-        camera.start()
-        camera.addCameraKitListener(object : CameraKitEventListener {
-            override fun onVideo(p0: CameraKitVideo?) {
-            }
 
-            override fun onEvent(p0: CameraKitEvent?) {
-            }
-
-            override fun onImage(p0: CameraKitImage?) {
-                val picture = p0!!.jpeg
-                val result: Bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.size)
-                onImageCaptured(result)
-            }
-
-            override fun onError(p0: CameraKitError?) {
-            }
-        })
-
-        takePhotoButton.setOnClickListener {
-            camera.captureImage()
+        if (null == savedInstanceState) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, Camera2BasicFragment.newInstance())
+                    .commit()
         }
     }
 
-    override fun onPause() {
-        camera.stop()
-        super.onPause()
-    }
-
-    fun onImageCaptured(bitmap: Bitmap) {
-        print("kek")
-    }
 }

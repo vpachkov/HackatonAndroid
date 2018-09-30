@@ -137,11 +137,12 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/City"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_rect"
-                android:hint="Name"
+                android:hint="City"
                 android:padding="15dp"
                 android:singleLine="true"
                 android:textSize="17sp" />

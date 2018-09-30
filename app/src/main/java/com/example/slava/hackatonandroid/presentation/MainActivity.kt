@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import com.example.slava.hackatonandroid.R
+import com.example.slava.hackatonandroid.data.PreferencesHelper
 import com.example.slava.hackatonandroid.domain.utils.TextAdder
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,15 +19,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(this, DiscoverPlaceActivity::class.java))
+        //startActivity(Intent(this, ProcessingPhotoActivity::class.java))
 
-        /*//if user hasn't been authorized move him to authorization
+        //if user hasn't been authorized move him to authorization
         if (!(PreferencesHelper.getSharedPreferenceBoolean(applicationContext, PreferencesHelper.KEY_IS_LOGINED, false))) {
             startActivity(Intent(this, LoginActivity::class.java))
-        }*/
+        }
+
+        else{
+            startActivity(Intent(this, DiscoverPlaceActivity::class.java))
+        }
 
         main_activity_main_block.addView(
-                TextAdder.makeHatBlock("Discover new ", "Places", this)
+                TextAdder.makeHatBlock("Discover new", "Places", this)
         )
 
         try {

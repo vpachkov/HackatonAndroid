@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HackatonAndroid</string>
+    <string name="camera_error">Device doesn\'t supported</string>
 </resources>
