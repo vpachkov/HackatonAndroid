@@ -77,7 +77,6 @@ class DiscoverPlaceActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap?.clear()
 
 
-
             mMap?.addMarker(MarkerOptions().position(LatLng(lat_bul, long_bul))
                     .title(name_bul).icon(BitmapDescriptorFactory
                             .defaultMarker(BitmapDescriptorFactory.HUE_RED)))

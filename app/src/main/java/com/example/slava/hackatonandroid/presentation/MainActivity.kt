@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val context = this
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
 
         try {
@@ -45,6 +45,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener);
         } catch(ex: SecurityException) {
             Log.d("myTag", "Security Exception, no location available");
+        }
+
+
+        if (intent.hasExtra("id")){
+            doAsync {
+                val params1 = mapOf(
+                        "token" to PreferencesHelper.getSharedPreferenceString(context, PreferencesHelper.KEY_TOKEN , "extratoken"),
+                        "id" to intent.getStringExtra("id")
+                )
+                val responseBuildings = post("https://dookyheroky.herokuapp.com/api/buildings/add/" , data = params1)
+            }
         }
 
         //startActivity(Intent(this, ProcessingPhotoActivity::class.java))
@@ -62,7 +73,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 TextAdder.makeHatBlock("Discover new", "Places", this)
         )
 
-        val context = this
 
         val params = mapOf(
                 "token" to PreferencesHelper.getSharedPreferenceString(this, PreferencesHelper.KEY_TOKEN , "extratoken"),
@@ -83,6 +93,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
             onComplete {
                 for (building in 0 until responseBuildings.jsonObject.getJSONArray("result").length()){
+                    if (responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getBoolean("visited"))
+                        continue
+
                     val block = TextAdder.makeItemPlaces(context ,responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("name"),
                             responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("info"))
                     block.setOnClickListener {
@@ -92,6 +105,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                         inten.putExtra("name" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("name"))
                         inten.putExtra("lat1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("lat"))
                         inten.putExtra("long1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("long"))
+                        inten.putExtra("id1" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("id"))
                         startActivity(inten)
                     }
                    // Log.e("keek" , responseBuildings.jsonObject.getJSONArray("result").getJSONObject(building).getString("lat"))
