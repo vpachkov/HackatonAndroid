@@ -24,18 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".presentation.LoginActivity">
-
-        </activity>
-
-        <activity android:name=".presentation.RegisterActivity">
-
-        </activity>
-
+        <activity android:name=".presentation.LoginActivity" />
+        <activity android:name=".presentation.RegisterActivity" />
         <activity android:name=".presentation.DiscoverPlaceActivity" />
-
         <activity android:name=".presentation.ProcessingPhotoActivity" />
+
+        <service android:name=".domain.LocationService" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
